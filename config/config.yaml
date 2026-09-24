@@ -1,0 +1,60 @@
+seed: 42
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  models_dir: models
+  results_dir: results
+  figures_dir: results/figures
+  predictions_dir: results/predictions
+
+datasets:
+
+  A:
+    raw_file: dataset_a_cvd.csv
+    processed_file: dataset_a_processed.csv
+
+  B:
+    raw_file: dataset_b_brfss.csv
+    processed_file: dataset_b_processed.csv
+
+target:
+  name: cvd
+
+features:
+  - age
+  - gender
+  - smoking
+  - bmi
+  - alcohol
+  - physical_activity
+  - high_bp
+  - high_chol
+  - high_gluc
+
+cross_validation:
+  n_splits: 5
+  shuffle: true
+  random_state: 42
+
+bootstrap:
+  n_resamples: 2000
+  confidence_level: 0.95
+
+preprocessing:
+  imputation: median
+  scaling: standard
+  use_smote: false
+
+evaluation:
+  threshold: 0.50
+
+quality_control:
+  age_min: 18
+  age_max: 100
+  bmi_min: 10
+  bmi_max: 80
+  systolic_min: 70
+  systolic_max: 250
+  diastolic_min: 40
+  diastolic_max: 150
